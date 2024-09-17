@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "esModuleInterop": true,
+        "types": [
+            "cypress",
+            "@badeball/cypress-cucumber-preprocessor"
+        ]
+    },
+    "include": [
+        "cypress/**/*.ts"
+    ]
+}
