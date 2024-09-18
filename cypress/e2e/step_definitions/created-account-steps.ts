@@ -3,7 +3,7 @@ import CreatedAccountPage from "../../page_objects/created-account-page";
 
 
 var createdAccountPage = new CreatedAccountPage();
-When('I click on the Continue button', () => {
+Then('I click on the Continue button', () => {
     createdAccountPage.clickContinue();
 })
 

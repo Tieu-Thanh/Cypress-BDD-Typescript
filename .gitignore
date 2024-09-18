@@ -47,3 +47,5 @@ out/
 
 # Ignore Linux temporary files
 *.swp
+
+note.txt

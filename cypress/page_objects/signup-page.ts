@@ -20,7 +20,7 @@ export default class SignupPage extends BasePage {
     private _btnSubmit(selector: string): WebElement {
         return new WebElement(`//button[@data-qa='${selector}']`, true);
     }
-
+    
     // Methods for interacting with form fields
     public selectTitle(title: string) {
         const titleSelector = title === "Mr" ? "id_gender1" : "id_gender2";

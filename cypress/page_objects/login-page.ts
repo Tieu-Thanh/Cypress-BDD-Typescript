@@ -6,13 +6,12 @@ export default class LoginPage extends BasePage {
     private _txtField(selector: string): WebElement { return new WebElement(`//input[@data-qa='${selector}']`, true); }
     private _btnSubmit(selector: string): WebElement {
         return new WebElement(`button[data-qa='${selector}']`);
-        //button[@data-qa='signup-button']
     }
+    private _msgEmailExist = new WebElement(`//p[contains(text(), 'Email Address already exist!')]`, true);
 
     public typeSignupName(name: string) {
         this._txtField("signup-name").enter(name);
     }
-
 
     public typeSignupEmail(email: string) {
         this._txtField("signup-email").enter(email);
@@ -35,5 +34,9 @@ export default class LoginPage extends BasePage {
 
     public clickLogin() {
         this._btnSubmit("login-button").click();
+    }
+
+    public isWarningMessageDisplayed() {
+        return this._msgEmailExist.isExist();
     }
 }

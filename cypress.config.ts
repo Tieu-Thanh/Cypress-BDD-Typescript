@@ -20,5 +20,8 @@ export default defineConfig({
             on('file:preprocessor', bundler);
             return config;
         },
+        env: {
+            TAGS: '@Successful', // Default tag
+        }
     },
 });

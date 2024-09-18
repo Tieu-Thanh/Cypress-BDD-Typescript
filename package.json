@@ -6,7 +6,7 @@
         "cy:run": "cypress run",
         "cy:open": "cypress open",
         "cy:open:e2e:edge": "cypress open --e2e --browser edge",
-        "cy:allure:report": "allure generate allure-results --clean -o allure-report && allure open"
+        "cy:run:tag": "cross-env TAG=$npm_config_tag npx cypress run --env TAGS=\"@%TAG%\""
     },
     "keywords": [],
     "author": "",
@@ -16,8 +16,7 @@
         "@badeball/cypress-cucumber-preprocessor": "^20.1.2",
         "@bahmutov/cypress-esbuild-preprocessor": "^2.2.3",
         "@shelex/cypress-allure-plugin": "^2.40.2",
-        "allure-commandline": "^2.30.0",
-        "allure-cypress": "^3.0.0",
+        "cross-env": "^7.0.3",
         "cypress": "^13.14.2",
         "cypress-xpath": "^2.0.1",
         "esbuild": "^0.23.1",
