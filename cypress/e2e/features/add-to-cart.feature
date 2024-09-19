@@ -3,9 +3,9 @@ Feature: User add products in cart
   Background:
     Given I go to the Home page
     And I go to the Login page
-    And I log in by an "<account>"
-      | account      |
-      | credentials1 |
+    And I log in by an account
+      | key     | value        |
+      | account | credentials1 |
     And I go to Product page
     And my cart is empty
 

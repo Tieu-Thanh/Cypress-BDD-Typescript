@@ -19,8 +19,11 @@ Then('a warning message is shown', () => {
     loginPage.isWarningMessageDisplayed();
 })
 
-Given('I log in by an {string}', (credentials: string) => {
-    JsonUtil.readJsonFile<CredentialsDto>("credentials.json").then((users) => {
-        loginPage.login(users[credentials]);
+Given('I log in by an account', (dataTable) => {
+    const accountData = dataTable.rowsHash();
+    const dataKey = accountData['account'];
+    JsonUtil.readJsonFile<CredentialsDto>("credentials.json").then((credentials) => {
+        loginPage.login(credentials[dataKey]);
     });
-})
+});
+

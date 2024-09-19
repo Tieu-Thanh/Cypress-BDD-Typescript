@@ -21,7 +21,7 @@ export default defineConfig({
             return config;
         },
         env: {
-            TAGS: '@Successful', // Default tag
+            // TAGS: '@Successful', // Default tag
         }
     },
 });
