@@ -1,5 +1,7 @@
-import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import LoginPage from "../../page_objects/login-page";
+import JsonUtil from "../../utility/json-util";
+import { CredentialsDto } from "../../data_objects/credentials-dto";
 
 
 const loginPage = new LoginPage();
@@ -15,4 +17,10 @@ When('I click on the Signup button', () => {
 
 Then('a warning message is shown', () => {
     loginPage.isWarningMessageDisplayed();
+})
+
+Given('I log in by an {string}', (credentials: string) => {
+    JsonUtil.readJsonFile<CredentialsDto>("credentials.json").then((users) => {
+        loginPage.login(users[credentials]);
+    });
 })

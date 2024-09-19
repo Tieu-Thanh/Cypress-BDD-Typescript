@@ -1,4 +1,4 @@
-import { When } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, When } from "@badeball/cypress-cucumber-preprocessor";
 import SignupPage from "../../page_objects/signup-page";
 import JsonUtil from "../../utility/json-util";
 import { AccountDto } from "../../data_objects/account-dto";

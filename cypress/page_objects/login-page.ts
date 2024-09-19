@@ -1,3 +1,4 @@
+import { CredentialsDto } from '../data_objects/credentials-dto';
 import WebElement from '../support/web-element';
 import BasePage from './base-page';
 
@@ -18,22 +19,25 @@ export default class LoginPage extends BasePage {
     }
 
     public typeLoginEmail(email: string) {
-        this._txtField("login-email").type(email);
+        this._txtField("login-email").enter(email);
     }
 
     public typeLoginPassword(password: string) {
-        this._txtField("login-password").type(password);
+        this._txtField("login-password").enter(password);
     }
 
     public clickSignup() {
-        // const ele = new WebElement("//button[@data-qa='signup-button']", true);
-        // ele.click();
-        debugger;
         this._btnSubmit("signup-button").click();
     }
 
     public clickLogin() {
         this._btnSubmit("login-button").click();
+    }
+
+    public login(credentials: CredentialsDto){
+        this.typeLoginEmail(credentials.email);
+        this.typeLoginPassword(credentials.password);
+        this.clickLogin();
     }
 
     public isWarningMessageDisplayed() {
