@@ -9,7 +9,7 @@ export default defineConfig({
         specPattern: 'cypress/e2e/**/*.feature',
         supportFile: 'cypress/support/index.ts',
         chromeWebSecurity: false,
-        watchForFileChanges: true,  // Enable watching for file changes
+        watchForFileChanges: false,  // Enable watching for file changes
         setupNodeEvents(on, config) {
             addCucumberPreprocessorPlugin(on, config);
 

@@ -1,98 +1,3 @@
-// export default class WebElement {
-//     locator: string;
-//     isXpath: boolean;
-//     timeout: number;
-
-//     constructor(locator: string, isXpath: boolean = false, timeout: number = 2000) {
-//         this.locator = locator;
-//         this.isXpath = isXpath;
-//         this.timeout = timeout;
-//     }
-
-//     // Get all elements (supports both CSS and XPath)
-//     getAllElements() {
-//         return this.isXpath ? cy.xpath(this.locator) : cy.get(this.locator);
-//     }
-
-//     // Get the element count
-//     getElementCount() {
-//         return this.getAllElements().its('length');
-//     }
-
-//     // Check if the element exists
-//     isExist() {
-//         return this.getAllElements().should('exist');
-//     }
-
-//     // Check if the element does not exist
-//     isNotExist() {
-//         return this.getAllElements().should('not.exist');
-//     }
-
-//     // Check if the element is visible
-//     isVisible() {
-//         return this.getAllElements().should('be.visible');
-//     }
-
-//     // Check if the element is not visible
-//     isNotVisible() {
-//         return this.getAllElements().should('not.be.visible');
-//     }
-
-//     // Scroll element into view
-//     scrollIntoView() {
-//         this.getAllElements().scrollIntoView();
-//     }
-
-//     // Ensure the element is not disabled
-//     ensureNotDisabled() {
-//         this.getAllElements().should('not.be.disabled');
-//     }
-
-//     // Ensure the element is not readonly
-//     ensureNotReadonly() {
-//         this.getAllElements().should('not.be.readonly');
-//     }
-
-//     // Ensure the element is not animating
-//     ensureNotAnimating() {
-//         this.getAllElements().should('not.have.css', 'animation');
-//     }
-
-//     // Ensure the element is not detached from the DOM
-//     ensureNotDetached() {
-//         this.getAllElements().should('not.be.detached');
-//     }
-
-//     // Click the element
-//     click() {
-//         this.getAllElements().click();
-//     }
-
-//     // Double-click the element
-//     dblclick() {
-//         this.getAllElements().dblclick();
-//     }
-
-//     // Type into the element
-//     type(text: string) {
-//         this.getAllElements().clear();
-//         this.getAllElements().type(text);
-//     }
-
-//     // Clear the input field
-//     clear() {
-//         this.getAllElements().clear();
-//     }
-
-//     check() {
-//         this.getAllElements().check();
-//     }
-
-//     select(text: string) {
-//         this.getAllElements().select(text);
-//     }
-// }
 export default class WebElement {
     locator: string;
     isXpath: boolean;
@@ -112,6 +17,16 @@ export default class WebElement {
     // Get element count
     getElementCount(): Cypress.Chainable<number> {
         return this.getAllElements().its('length');
+    }
+
+    // Find elements by CSS selector or XPath
+    findElement(selector: string, isXpath: boolean = false): Cypress.Chainable<JQuery<HTMLElement>> {
+        return isXpath ? cy.xpath(selector, { timeout: this.timeout }) : cy.get(selector, { timeout: this.timeout });
+    }
+
+    // Get the text of the element(s)
+    getText(): Cypress.Chainable<string> {
+        return this.getAllElements().invoke('text').then((text) => text.trim());
     }
 
     // Check if the element exists
@@ -174,5 +89,10 @@ export default class WebElement {
     // Select an option from a dropdown
     select(text: string): Cypress.Chainable {
         return this.ensureVisibleAndEnabled().select(text);
+    }
+
+    // Implement hover (trigger mouseover event)
+    hover(): Cypress.Chainable {
+        return this.getAllElements().trigger('mouseover');
     }
 }
