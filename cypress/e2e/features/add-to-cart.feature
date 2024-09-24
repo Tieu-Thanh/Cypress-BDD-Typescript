@@ -9,6 +9,7 @@ Feature: User add products in cart
     And I go to Product page
     And my cart is empty
 
+  @AddToCart
   Scenario Outline: Successful add products in cart
     When I hover on a random product and click Add to cart button
     And I click on Continue Shopping button
