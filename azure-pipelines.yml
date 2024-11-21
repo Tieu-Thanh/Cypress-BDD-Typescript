@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  name: 'Default' # Change to the name of your local agent pool
+  name: 'FirstAgentPool' # Change to the name of your local agent pool
   demands:
     - Agent.Name -equals FirstAgentPool 
 
