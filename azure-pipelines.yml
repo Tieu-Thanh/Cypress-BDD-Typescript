@@ -7,9 +7,9 @@ trigger:
 - main
 
 pool:
-  name: 'FirstAgentPool' # Change to the name of your local agent pool
+  name: 'Default' # Change to the name of your local agent pool
   demands:
-    - Agent.Name -equals FirstAgentPool 
+    - Agent.Name -equals VNNOT01219 
 
 steps:
 - task: NodeTool@0
